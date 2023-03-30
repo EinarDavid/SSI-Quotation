@@ -1,0 +1,97 @@
+.divTable {
+  width: 100%;
+  overflow-y: scroll;
+  height: 100%;
+
+}
+
+.tableContainer {
+  width: 100%;
+
+}
+
+.divTable thead th {
+  position: sticky;
+  top: 0;
+  background: var(--bs-textInput);
+}
+
+.divTable::-webkit-scrollbar {
+  width: 10px;
+  border: none;
+  /* box-shadow: inset 0 0 6px rgba(0, 0, 0, .3); */
+  /* background-color: #ECE9F2; */
+  border-radius: 10px;
+  /* scroll-margin-left: 20px; */
+  position: absolute;
+}
+
+.divTable::-webkit-scrollbar-thumb {
+  background-color: var(--bs-scroll);
+  border-radius: 10px;
+}
+
+
+
+.titleTable {
+  /* display: flex; */
+  padding-left: 5px;
+  text-align: start;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--bs-secondary);
+}
+
+.trTable {
+  margin: 0;
+}
+
+.containerTable {
+  text-align: start;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+
+  height: 30px;
+  margin: 0;
+  padding: 0 0 0 5px;
+  color: var(--bs-secondary);
+
+}
+
+.containerPaginationTable {
+  width: 100%;
+  padding: 0;
+}
+
+.containerPagination {
+  display: flex;
+  justify-content: flex-end
+}
+
+.footerTable {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  /* margin-right: 3%; */
+  gap:10px
+}
+
+.containerPagRow {
+  position: absolute;
+  background: var(--bs-white);
+  box-shadow: 5px 5px 10px rgb(0 0 0 / 30%);
+  padding: 5px;
+  border-radius: 10px;
+  border-color: var(--bs-black);
+  width: 60px;
+  height: auto;
+  margin-top: -10px;
+}
+
+.containerPagRow p {
+  margin: 0;
+}

@@ -1,0 +1,14 @@
+.SeccionFilter {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+.lineFilter {
+    /* background-color: var(--bs-textcolor); */
+    width: 100%;
+    margin: 0;
+    height: 1px;
+
+}

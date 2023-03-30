@@ -1,0 +1,187 @@
+.h1Style {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 33px;
+    color: var(--bs-primary);
+    margin: 0;
+}
+
+.h2Style {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    color: var(--bs-black);
+    margin: 0;
+}
+.h3StyleBold {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: var(--bs-black);
+    margin: 0;
+    width: 100%;
+    display: flex;
+}
+
+
+
+.titleStyleH3 {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+
+    display: flex;
+    align-items: center;
+
+    color: var(--bs-secondary);
+    margin: 0 0 0 0;
+}
+
+
+.titleFilter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 5px 0 5px;
+}
+
+.labelInput {
+    width: 100%;
+    padding-left: 10px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+
+    display: flex;
+    align-items: center;
+
+    margin: 0;
+
+    color: var(--bs-black);
+}
+.labelInputRow {
+    width: 72px;
+    padding-left: 10px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+
+    display: flex;
+    align-items: center;
+
+    margin: 0;
+
+    color: var(--bs-black);
+}
+
+.labelInputMessage {
+    /* width: 100%;
+    padding-left: 10px; */
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* padding-right: 33px; */
+    margin: 0;
+
+    color: var(--bs-primary);
+}
+.labelInputMessageSuccess{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* padding-right: 33px; */
+    margin: 0;
+
+    color: var(--bs-success);
+}
+
+.labelInputMessageError {
+    /* width: 100%;
+    padding-left: 10px; */
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* padding-right: 33px; */
+    margin: 0;
+
+    color: var(--bs-danger);
+}
+
+
+
+
+
+.labelInputSelectRow {
+    width: auto;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+
+    color: var(--bs-placeholder);
+}
+
+.stateParrafo {
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+
+    display: flex;
+    align-items: center;
+    margin: 2px 0 2px 0;
+    color: var(--bs-white);
+
+}
+
+.Effort{
+    color: var(--bs-success);
+    font-family: Roboto-Bold;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 21px;
+    margin-bottom: auto;
+    margin-top: auto;
+
+}

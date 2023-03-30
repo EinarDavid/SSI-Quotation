@@ -1,24 +1,22 @@
-import logo from './logo.svg';
+
 import './App.css';
+import './styles/space.css';
+import './styles/navigator.css';
+import './styles/labelStyle.css';
+import './styles/buttonStyle.css';
+import './styles/textInputStyle.css';
+import './styles/filterStyle.css';
+import './styles/tableStyle.css';
+import './styles/modalStyle.css';
+import './styles/pagination.css';
+
+import { HomeApp } from './router/HomeApp';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <HomeApp />
+    </>
   );
 }
 

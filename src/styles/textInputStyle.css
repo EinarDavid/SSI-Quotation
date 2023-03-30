@@ -1,0 +1,274 @@
+select:active {
+    border-style: solid;
+}
+
+select:focus-visible {
+    /* outline: var(--bs-primary) auto 1px; */
+    border-style: solid;
+    outline: none;
+}
+
+option {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: var(--bs-black);
+
+    background: var(--bs-textInput);
+
+    display: block;
+    white-space: nowrap;
+    min-height: 1.2em;
+    padding: 2px;
+    /* border: 2px solid #EAEAEA; */
+    border-radius: 10px;
+
+
+}
+
+option:focus-visible {
+    /* outline: var(--bs-primary) auto 1px; */
+    border-style: solid;
+    outline: none;
+}
+
+option:hover {
+    background-color: var(--bs-textInput);
+}
+
+input:focus-visible {
+    border-style: solid;
+    outline: none;
+}
+
+.containerTextInput {
+    width: 100%;
+    padding: 0 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.containerTextInputRow {
+    width: auto;
+    padding: 0 0 0 0;
+    display: flex;
+    gap: 10px;
+}
+
+.containerTextInputLabelRow {
+    width: 100%;
+    padding: 0 0 0 0;
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+}
+
+.textInput {
+    /* margin-top: 4px; */
+    display: flex;
+    width: 100%;
+    height: 40px;
+    background-color: var(--bs-textInput);
+    border-style: solid;
+    border: 0px solid #EAEAEA;
+    border-radius: 10px;
+
+    padding-left: 15px;
+    padding-right: 15px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: var(--bs-black);
+}
+
+.textInputRow {
+    width: auto;
+    height: 35px;
+    background: var(--bs-white);
+    border: 2px solid #EAEAEA;
+    border-radius: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    /* display: flex;
+    align-items: center; */
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 13px;
+    color: var(--bs-black);
+}
+
+/* Row */
+.containerForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.rowInputs {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+/* Estilos del detalle del detalle */
+.columnaContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.rowContainer {
+    /* height: 36px; */
+    display: flex;
+    padding: 0 10px;
+    width: 100%;
+    /* background: rebeccapurple; */
+    gap: 5px;
+}
+.rowContainerTitle{
+    display: flex;
+    padding: 0 55px 0 10px;
+    width: 100%;
+    /* background: rebeccapurple; */
+    gap: 5px;
+}
+
+.rowContainerMessage {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 44px 0 20px;
+    width: 100%;
+    /* background: rebeccapurple; */
+    gap: 15px;
+}
+
+
+.inputCell {
+    background: #ffffff;
+    border-radius: 8px;
+    height: 28px;
+    font-family: 'Roboto-Regular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    /* line-height: 18px; */
+    padding-left: 20px;
+    border: 1px solid #dee3e4;
+    outline-color: rgb(105, 150, 189);
+
+}
+
+.inputHours {
+    width: 72px;
+    padding-left: 8px;
+    padding-right: 8px;
+    text-align: center;
+}
+
+.inputRole {
+    width: 100%;
+    padding-left: 8px;
+    cursor: inherit;
+}
+
+.inputDate {
+    width: 100px;
+    padding-left: 8px;
+    cursor: inherit;
+}
+
+.buttonRemoveRow {
+    margin: 0;
+    padding: 0;
+    min-width: 28px;
+    min-height: 28px;
+    max-height: 28px;
+    border-radius: 8px;
+    background-color: #EFF0F8;
+    border-width: 0;
+    color: #454545;
+    text-align: center;
+}
+
+.buttonRemoveRow:hover {
+    background-color: #f5f5f5;
+    box-shadow: 0px 5px 14px -7px #b0b0b0;
+}
+
+.buttonRemoveRowDisabled{
+    background-color: var(--bs-disabled);
+    margin: 0;
+    padding: 0;
+    min-width: 28px;
+    min-height: 28px;
+    max-height: 28px;
+    border-radius: 8px;
+    border-width: 0;
+    color: var(--bs-secondary);
+    text-align: center;
+}
+
+.dateContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.dateRange {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.labelInputCheck {
+    width: auto;
+    padding-left: 9px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+
+    margin: 3px 0 3px 0;
+
+    color: var(--bs-secondary);
+}
+
+.checkbookInput {
+    appearance: none;
+    background: var(--bs-white);
+    /* violeta 75% */
+    border: 2px solid var(--bs-primary);
+    border-radius: 4px;
+    height: 20px;
+    width: 20px;
+    margin: 0;
+    margin-right: 5px;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+  }
+  
+  .checkbookInput:checked {
+    /* border: 1px solid var(--bs-secondary); */
+    background: var(--bs-primary);
+    background-image: url(../assets/Check.png);
+    background-size: cover;
+  }
+
+  .checkbookInput:disabled{
+    /* background: var(--bs-disabled); */
+    border: 2px solid var(--bs-disabled);
+  }

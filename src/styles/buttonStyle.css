@@ -1,0 +1,234 @@
+button:active {
+    border-style: solid;
+}
+
+.ButtonIcon:active,
+.ButtonPrimary:active,
+.button_close:active,
+.ButtonDeleteFiltro {
+    border-style: none;
+}
+
+
+.ButtonIcon:focus-visible,
+.ButtonPrimary:focus-visible,
+.button_close:focus-visible,
+.stateStyle:focus-visible,
+.buttonRemoveRow:focus-visible,
+.buttonAddForm:focus-visible,
+.ButtonDeleteFiltro:focus-visible {
+    border-style: none;
+    /* outline: none; */
+    outline: var(--bs-blue) auto 1px;
+}
+
+/* .button_close:active {
+    border-style: none;
+} */
+
+.ButtonIcon {
+    background: transparent;
+    height: 20px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    /* border-color: var(--bs-primary); */
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+
+    color: var(--bs-secondary);
+}
+
+.ButtonDeleteFiltro {
+    background: transparent;
+    height: 40px;
+    min-width: 100px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    /* border-color: var(--bs-primary); */
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+
+    color: var(--bs-secondary);
+}
+
+.FilterActiveSVG {
+    color: aqua;
+}
+
+.ButtonActiveFilter {
+    background: var(--bs-primary);
+    /* width: 60%; */
+    height: 40px;
+    border-style: solid;
+    border-radius: 10px;
+    /* border: none; */
+
+    border-color: var(--bs-primary);
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 103%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 2px;
+
+    color: var(--bs-white);
+}
+
+.ButtonUnActiveFilter {
+    background: transparent;
+    /* width: 60%; */
+    height: 40px;
+    border-style: solid;
+    border-radius: 10px;
+
+    border-color: var(--bs-primary);
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 103%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 2px;
+
+    color: var(--bs-primary);
+}
+
+.buttonPrint {
+    background-color: transparent;
+    border-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.button_close {
+    background: none;
+    border: none;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    display: flex;
+    justify-content: center;
+}
+
+.containerButtonModal {
+    width: 100%;
+    text-align: center;
+}
+
+.ButtonPrimaryDisabled {
+    background: var(--bs-disabled);
+    width: 32%;
+    height: 40px;
+    border-radius: 13px;
+    border: none;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 15px;
+
+    align-items: center;
+    text-align: center;
+
+
+    color: var(--bs-white);
+}
+
+.ButtonPrimary {
+    background: var(--bs-primary);
+    width: 32%;
+    height: 40px;
+    border-radius: 13px;
+    border: none;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 15px;
+
+    align-items: center;
+    text-align: center;
+
+
+    color: var(--bs-white);
+}
+
+
+
+.stateStyle {
+    border-radius: 5px;
+    border-style: none;
+
+    height: 22px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px 5px;
+    gap: 2px;
+    /* padding: 4px 10px; */
+
+}
+
+.AddInputContainer {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+.buttonAddForm {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px 10px;
+    gap: 5px;
+    background: #FFFFFF;
+    border: 1px solid var(--bs-primary);
+    border-radius: 30px;
+
+    font-family: 'Gotham';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 15px;
+
+    color: var(--bs-primary);
+
+}

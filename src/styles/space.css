@@ -1,0 +1,43 @@
+/* Space */
+.spaceRow5 {
+  min-width: 5px;
+}
+
+.spaceRow10 {
+  min-width: 10px;
+}
+
+.spaceRow15 {
+  min-width: 15px;
+}
+
+.spaceRow20 {
+  min-width: 20px;
+}
+
+.spaceRow25 {
+  min-width: 25px;
+}
+.spaceRow30{
+  min-width: 30px;
+}
+
+.spaceVer5 {
+  height: 5px;
+}
+
+.spaceVer10 {
+  height: 10px;
+}
+
+.spaceVer15 {
+  height: 15px;
+}
+
+.spaceVer20 {
+  height: 20px;
+}
+
+.spaceVer30 {
+  height: 30px;
+}
