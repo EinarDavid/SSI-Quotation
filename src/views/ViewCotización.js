@@ -335,7 +335,7 @@ export const ViewCotización = ({ callback }) => {
   }
 
   const validarLimite = (e, limite, index) => {
-    console.log("Limite", limite);
+    //console.log("Limite", limite);
     if (limite < 0) limite = 0;
     if (e.target.value >= limite) {
       let campos = [...detalle];
@@ -411,10 +411,10 @@ export const ViewCotización = ({ callback }) => {
       if (data.statusCheck) {
         data.status = "REG";
       }
-      console.log("Datos Enviados: ", data);
+      //console.log("Datos Enviados: ", data);
 
       postAddResource(data).then(({ data }) => {
-        console.log("Res BD", data);
+        //console.log("Res BD", data);
         setDisableButton(false);
         if (callback) callback();
         //limpiar cajas, cerrar modal y avisar que fue añadido con exito

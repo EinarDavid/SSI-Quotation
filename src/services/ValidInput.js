@@ -1,7 +1,7 @@
 
 export function valideKeyEffort(e) {
     var key = window.Event ? e.which : e.keyCode;
-    console.log('Key', e.target.value)
+    //console.log('Key', e.target.value)
     //console.log(key)
     e.target.backupValueValid = e.target.value;
 

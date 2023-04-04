@@ -1,6 +1,6 @@
 import axios from "axios";
 const api = process.env.REACT_APP_API;
-//const api = 'http://10.47.19.138:4000'
+
 
 //Get
 export async function getClientAll() {

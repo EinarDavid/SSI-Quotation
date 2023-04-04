@@ -94,6 +94,9 @@ export const Cotizacion = () => {
   const cargarDatos = () => {
     postFilters(search).then(({ data }) => {
       //console.log("Res Filter", data);
+      data= data.map((da, i) =>({
+        ...da, i
+      }))
       setQuotationOriginal(data);
     });
   };
@@ -223,7 +226,7 @@ export const Cotizacion = () => {
                             <></>
                           )}
                         </td>
-                        <td className="containerTable">{i + 1}</td>
+                        <td className="containerTable">{quo.i + 1}</td>
                         <td className="containerTable">
                           {quo.status ? (
                             <ButtonState State={quo?.status} />

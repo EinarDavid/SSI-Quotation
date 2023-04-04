@@ -6,7 +6,7 @@ export function Resource (campos, getHoursResource, validacionHoras, setValidaci
         campos[index].month,
         campos[index].week
       ).then(({ data }) => {
-        console.log("Horas recurso", data);
+        //console.log("Horas recurso", data);
 
         var horasRecurso = 0;
         if (data.message) {
