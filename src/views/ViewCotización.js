@@ -146,6 +146,11 @@ export const ViewCotización = ({ callback }) => {
         }
       );
     }
+    if(event.target.name==='month'){
+      //console.log('Mes cambio')
+      campos[index].week = 0;
+    }
+
 
     //console.log("Week----", campos[index].week);
 
@@ -196,13 +201,7 @@ export const ViewCotización = ({ callback }) => {
           Number(data[0].totalefforthoursresource) -
           detalle[index].backupEffort +
           detalle[index].effort;
-        console.log(
-          "horas recurso: ",
-          horasRecurso,
-          Number(data[0].totalefforthoursresource),
-          detalle[index].backupEffort,
-          detalle[index].effort
-        );
+        //console.log( "horas recurso: ", horasRecurso, Number(data[0].totalefforthoursresource), detalle[index].backupEffort, detalle[index].effort);
 
         let horasDisponibles = [...validacionHoras];
         let horasSemana =
@@ -599,7 +598,7 @@ export const ViewCotización = ({ callback }) => {
                     <select
                       name="week"
                       className="inputCell inputDate"
-                      value={det?.week}
+                      value={det?.week || ""}
                       onChange={(e) => handleChangeDetalle(e, i)}
                       required
                     >
@@ -635,7 +634,7 @@ export const ViewCotización = ({ callback }) => {
                   <select
                     name="state"
                     className="inputCell inputRole"
-                    value={det?.state}
+                    value={det?.state || ""}
                     onChange={(e) => handleChangeDetalle(e, i)}
                     required
                   >
