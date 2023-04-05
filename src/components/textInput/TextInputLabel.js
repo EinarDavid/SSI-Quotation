@@ -6,7 +6,7 @@ export const TextInputLabel = ({ LabelInput, Placeholder, ErrorInput, Value, Nam
             <div className='containerTextInput'>
                 <label className='labelInput'>{LabelInput}</label>
                 
-                <input type='text' className='textInput'
+                <input type='text' className='textInput textInputUppercase'
                     disabled={Disabled}
                     name={Name}
                     required={Required}

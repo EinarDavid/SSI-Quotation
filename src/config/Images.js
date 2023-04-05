@@ -14,6 +14,7 @@ import PageRight from '../assets/pageRight.svg';
 import View from '../assets/view.svg';
 import QuoUnSelect from '../assets/quotationUnselected.svg';
 import QuoSelect from '../assets/quotationSelected.svg';
+import Jira from '../assets/Jira.svg';
 
 const Images = {
     SSI_LOGO:SSI,
@@ -31,6 +32,7 @@ const Images = {
     VIEW: View,
     QUOUNSELECTED: QuoUnSelect,
     QUOSELECTED: QuoSelect,
+    JIRA: Jira,
     
 }
 

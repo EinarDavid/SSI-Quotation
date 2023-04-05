@@ -94,9 +94,10 @@ export const Cotizacion = () => {
   const cargarDatos = () => {
     postFilters(search).then(({ data }) => {
       //console.log("Res Filter", data);
-      data= data.map((da, i) =>({
-        ...da, i
-      }))
+      data = data.map((da, i) => ({
+        ...da,
+        i,
+      }));
       setQuotationOriginal(data);
     });
   };
@@ -185,6 +186,7 @@ export const Cotizacion = () => {
                       <th></th>
                       <th className="titleTable">Nro</th>
                       <th className="titleTable">Estado</th>
+                      <th></th>
                       <th className="titleTable">Código</th>
                       <th className="titleTable">Id_order</th>
                       <th className="titleTable">Cliente</th>
@@ -230,6 +232,13 @@ export const Cotizacion = () => {
                         <td className="containerTable">
                           {quo.status ? (
                             <ButtonState State={quo?.status} />
+                          ) : (
+                            <></>
+                          )}
+                        </td>
+                        <td>
+                          {quo.link_jira ? (
+                            <a target={"_blank"} href={quo.link_jira}><img src={Images.JIRA} width={25} alt={"View"}  /></a>
                           ) : (
                             <></>
                           )}

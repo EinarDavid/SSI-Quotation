@@ -7,7 +7,11 @@ import {
 
 import { TextInputLabel } from "../textInput/TextInputLabel";
 
-export const RegistroCotizacion = ({ cabecera, handleChangeCabecera }) => {
+export const RegistroCotizacion = ({
+  cabecera,
+  handleChangeCabecera,
+  validUrl,
+}) => {
   const [clients, setClients] = useState();
   const [resources, setResources] = useState();
   const [projectType, setProjectType] = useState();
@@ -42,7 +46,6 @@ export const RegistroCotizacion = ({ cabecera, handleChangeCabecera }) => {
       <div className="containerForm">
         <div className="rowInputs">
           <TextInputLabel
-            
             Name="project_code"
             Required={true}
             LabelInput={"Código Jira"}
@@ -83,6 +86,26 @@ export const RegistroCotizacion = ({ cabecera, handleChangeCabecera }) => {
         </div>
 
         <div className="rowInputs">
+          <div className="containerTextInput">
+            <label className="labelInput">Link del Jira</label>
+
+            <input
+              type="url"
+              className="textInput"
+              name="link_jira"
+              placeholder="Inserta el link del Jira"
+              pattern="[Hh][Tt][Tt][Pp][Ss]?:\/\/(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?"
+              defaultValue={cabecera?.link_jira}
+              onChange={(e) => handleChangeCabecera(e)}
+            ></input>
+            {validUrl ? (
+              <>
+                <label className="labelInputMessageError">El formato de la URL es incorrecto</label>{" "}
+              </>
+            ) : (
+              <></>
+            )}
+          </div>
           <div className="containerTextInput">
             <label className="labelInput">Responsable</label>
 

@@ -33,6 +33,7 @@ export const ViewCotización = ({ callback }) => {
 
   const [disableButton, setDisableButton] = useState(false);
   const [disbaledCheck, setDisbaledCheck] = useState(true);
+  const [validUrl, setValidUrl] = useState(false);
   const [cabecera, setCabecera] = useState({});
   const [detalle, setDetalle] = useState([
     {
@@ -98,9 +99,26 @@ export const ViewCotización = ({ callback }) => {
   //console.log(detalle);
 
   const handleChangeCabecera = (event) => {
-    console.log("Cabecera", event.target.checked);
+    //console.log("Cabecera", event.target.checked);
     if (event.target.name === "statusCheck") {
       setCabecera({ ...cabecera, [event.target.name]: event.target.checked });
+    }
+    if (event.target.name === "project_code") {
+      setCabecera({
+        ...cabecera,
+        [event.target.name]: event.target.value.toUpperCase(),
+      });
+    }
+    if (event.target.name === "link_jira") {
+      if (!event.target.validity.valid) {
+        //console.log("--", event.target.validity.valid);
+        setValidUrl(true);
+        setDisableButton(true);
+      } else {
+        setValidUrl(false);
+        setDisableButton(false);
+      }
+      setCabecera({ ...cabecera, [event.target.name]: event.target.value });
     } else {
       setCabecera({ ...cabecera, [event.target.name]: event.target.value });
     }
@@ -146,11 +164,10 @@ export const ViewCotización = ({ callback }) => {
         }
       );
     }
-    if(event.target.name==='month'){
+    if (event.target.name === "month") {
       //console.log('Mes cambio')
       campos[index].week = 0;
     }
-
 
     //console.log("Week----", campos[index].week);
 
@@ -496,6 +513,7 @@ export const ViewCotización = ({ callback }) => {
             <div className="spaceVer15" />
             <div className="containerFormulario">
               <RegistroCotizacion
+                validUrl={validUrl}
                 cabecera={cabecera}
                 handleChangeCabecera={handleChangeCabecera}
               />
@@ -509,11 +527,10 @@ export const ViewCotización = ({ callback }) => {
               <h1 className="h3StyleBold">Nombre del recurso</h1>
               <h1 className="h3StyleBold">Rol</h1>
               <div className="dateContainer">
-              <h1 className="h3StyleBold inputDate">Año</h1>
-              <h1 className="h3StyleBold inputDate">Mes</h1>
-              <h1 className="h3StyleBold inputDate">Semana</h1>
-              <h1 className="h3StyleBold inputHours">Effort</h1>
-
+                <h1 className="h3StyleBold inputDate">Año</h1>
+                <h1 className="h3StyleBold inputDate">Mes</h1>
+                <h1 className="h3StyleBold inputDate">Semana</h1>
+                <h1 className="h3StyleBold inputHours">Effort</h1>
               </div>
               <h1 className="h3StyleBold">Estado</h1>
             </div>

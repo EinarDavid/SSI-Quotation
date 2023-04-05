@@ -80,6 +80,21 @@ export const ViewCotizacionDisabled = ({ cabecera, handleChangeCabecera }) => {
         </div>
 
         <div className="rowInputs">
+        <div className="containerTextInput">
+            <label className="labelInput">Link del Jira</label>
+
+            <input
+              disabled
+              type="url"
+              className="textInput"
+              name="link_jira"
+              placeholder="Inserta el link del Jira"
+              pattern="[Hh][Tt][Tt][Pp][Ss]?:\/\/(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?"
+              defaultValue={cabecera?.link_jira || ""}
+              onChange={(e) => handleChangeCabecera(e)}
+            ></input>
+           
+          </div>
           <div className="containerTextInput">
             <label className="labelInput">Responsable</label>
 
