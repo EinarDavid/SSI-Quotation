@@ -25,7 +25,7 @@ export const Navigator = () => {
             }
           </NavLink>
 
-          <NavLink to={"http://192.168.5.101:3000"}>
+          <NavLink  target={"_blank"} to={"http://192.168.5.101:3000"}>
             {({ isActive }) =>
               isActive ? (
                 <Select Image={Images.QUOSELECTED} Text={"SSI ODO"} />
