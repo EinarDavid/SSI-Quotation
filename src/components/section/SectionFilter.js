@@ -7,6 +7,7 @@ import {
   getStateRequirement,
 } from "../../services/cotizacionService";
 import { TextInput } from "../textInput/TextInput";
+import { TextNumber } from "../textInput/TextNumber";
 
 export const SectionFilter = ({ Search, search }) => {
   const [searchCodigo, setSearchCodigo] = useState(true);
@@ -15,6 +16,7 @@ export const SectionFilter = ({ Search, search }) => {
   const [estado, setEstado] = useState();
   const [tipoProyecto, setTipoProyecto] = useState();
   const [fecha, setFecha] = useState();
+  const [totalHoras, setTotalHoras] = useState()
 
   const [clients, setClients] = useState();
   const [resources, setResources] = useState();
@@ -46,6 +48,7 @@ export const SectionFilter = ({ Search, search }) => {
     }
   }, []);
 
+  
   return (
     <>
       <div className="SeccionFilter">
@@ -77,6 +80,7 @@ export const SectionFilter = ({ Search, search }) => {
                 OnChange={(e) => {
                   Search(e);
                 }}
+                Value={search?.project_code || ""}
               />
             </>
           ) : (
@@ -312,6 +316,44 @@ export const SectionFilter = ({ Search, search }) => {
                   ></input>
                 </div>
               </div>
+            </>
+          ) : (
+            <></>
+          )}
+        </div>
+        <div className="spaceVer5" />
+        <hr className="lineFilter" />
+        <div className="spaceVer5" />
+        <div>
+          <div className="titleFilter">
+            <h3 className="titleStyleH3">Total Horas</h3>
+            <button
+              className="buttonPrint"
+              onClick={() => setTotalHoras(!totalHoras)}
+            >
+              {totalHoras ? (
+                <>
+                  <img src={Images.ARROW_BOTTOM} width={20} alt={"ArrowDown"} />
+                </>
+              ) : (
+                <>
+                  <img src={Images.ARROW_TOP} width={20} alt={"ArrowUp"} />
+                </>
+              )}
+            </button>
+          </div>
+          {totalHoras ? (
+            <>
+              <TextNumber
+                Name={"total_effort"}
+                Placeholder={"Escribe aquí"}
+                OnChange={(e) => {
+                  Search(e);
+                  
+                }}
+
+                Value={search?.total_effort || ""}
+              />
             </>
           ) : (
             <></>

@@ -8,7 +8,7 @@ export const TextInput = ({ Placeholder, ErrorInput, Value, Name, OnChange }) =>
                 <input type='text' className='textInput'
                     name={Name}
                     placeholder={Placeholder}
-                    defaultValue={Value}
+                    value={Value}
                     onChange={OnChange}
                     
                 ></input>

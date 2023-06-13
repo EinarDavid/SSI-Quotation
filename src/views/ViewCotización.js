@@ -67,6 +67,8 @@ export const ViewCotización = ({ callback }) => {
     if (id_quotation) {
       getQuotationOne(id_quotation).then(({ data }) => {
         //console.log('data--', data)
+        
+
         setCabecera(data[0]);
       });
       getDetailQuotationAll(id_quotation).then(({ data }) => {
@@ -96,14 +98,16 @@ export const ViewCotización = ({ callback }) => {
     }
   }, []);
 
-  //console.log(detalle);
+  //console.log(cabecera);
+/*useEffect(() => {
+  console.log("----",cabecera)
+}, [cabecera])*/
+
 
   const handleChangeCabecera = (event) => {
-    //console.log("Cabecera", event.target.checked);
-    if (event.target.name === "statusCheck") {
-      setCabecera({ ...cabecera, [event.target.name]: event.target.checked });
-    }
+    
     if (event.target.name === "project_code") {
+      console.log("Proyect")
       setCabecera({
         ...cabecera,
         [event.target.name]: event.target.value.toUpperCase(),
@@ -111,7 +115,7 @@ export const ViewCotización = ({ callback }) => {
     }
     if (event.target.name === "link_jira") {
       if (!event.target.validity.valid) {
-        //console.log("--", event.target.validity.valid);
+        console.log("--JIRAAA", event.target.validity.valid);
         setValidUrl(true);
         setDisableButton(true);
       } else {
@@ -120,8 +124,22 @@ export const ViewCotización = ({ callback }) => {
       }
       setCabecera({ ...cabecera, [event.target.name]: event.target.value });
     } else {
-      setCabecera({ ...cabecera, [event.target.name]: event.target.value });
+      if(!event.target.name === "statusCheck"){
+        setCabecera({ ...cabecera, [event.target.name]: event.target.value });
+      }
     }
+
+    if (event.target.name === "statusCheck") {
+      console.log("Cabecera", event.target.name, event.target.checked);
+      setCabecera({...cabecera, [event.target.name]: event.target.checked})
+      /*if (event.target.checked){
+        setCabecera({ ...cabecera, statusCheck: "SI" });  
+      }
+      else{
+        setCabecera({ ...cabecera, statusCheck: "NO" });  
+      }*/
+      
+    } 
   };
 
   const handleChangeDetalle = (event, index) => {
@@ -422,11 +440,15 @@ export const ViewCotización = ({ callback }) => {
   const onSubmit = () => {
     try {
       setDisableButton(true);
+      console.log("Dataaa",cabecera)
       let data = cabecera;
       data.total_effort = sumaEffort;
       data.Campos = detalle;
+
+
       if (data.statusCheck) {
         data.status = "REG";
+        console.log("entro", data.status)
       }
       //console.log("Datos Enviados: ", data);
 
@@ -754,7 +776,7 @@ export const ViewCotización = ({ callback }) => {
                   name="statusCheck"
                   //onClick={(e) => handleChangeCabecera(e)}
                   onChange={(e) => handleChangeCabecera(e)}
-                  value={cabecera.statusCheck || ""}
+                  //value={cabecera.statusCheck}
                 />
                 Guardar como Registrado
               </label>

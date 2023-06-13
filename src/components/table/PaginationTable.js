@@ -16,12 +16,12 @@ export const PaginationTable = ({ cantidadPagina, laboratoriosOriginal, setLabor
         if (pag)
             getLaboratorioCant().then(({ data }) => {
                 //console.log('Cant:', data.cant, 'cantidadPagina:', cantidadPagina)
-                //console.log('Cantidad', data[0].count)
-                setCant(Math.ceil(data[0].count / cantidadPagina))
+                console.log('Cantidad', laboratoriosOriginal?.length )
+                setCant(Math.ceil(laboratoriosOriginal?.length / cantidadPagina))
             })
         else
             setPag(1)
-    }, [pag, cantidadPagina]);
+    }, [pag, cantidadPagina, laboratoriosOriginal]);
 
     useEffect(() => {
         setPag(1)

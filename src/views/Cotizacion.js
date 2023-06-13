@@ -17,13 +17,14 @@ import {
   postFilters,
 } from "../services/cotizacionService";
 import { ConvertDate } from "../services/Fecha";
+import { valideKeyEffort } from "../services/ValidInput";
 
 export const Cotizacion = () => {
   const navigate = useNavigate();
 
   const [activeButton, setActiveButton] = useState(false);
   const [modalShow, setModalShow] = useState(false);
-  const [quotation, setQuotation] = useState();
+  const [quotation, setQuotation] = useState([]);
   const [quotationOriginal, setQuotationOriginal] = useState();
   const [cantidadPagina, setCantidadPagina] = useState(20);
   const [search, setSearch] = useState({
@@ -35,11 +36,26 @@ export const Cotizacion = () => {
     project_type: "",
     date_start: "",
     date_end: "",
+    total_effort: "",
   });
 
   const handleChangeSearch = (event) => {
-    //console.log(event.target.value)
-    setSearch({ ...search, [event.target.name]: event.target.value });
+    setSearch({ ...search, [event.target.name]: event.target.value })
+
+    if (event.target.name == "total_effort") {
+
+      console.log("aqui");
+      const value = event.target.value;
+      const onlyNumbers = /^[0-9\b]+$/; // Expresión regular para permitir solo números y la tecla "backspace" (código 8)
+  
+      if (value === '' || onlyNumbers.test(value)) {
+        //setInputValue(value);
+        setSearch({ ...search, [event.target.name]: value })
+      }
+      
+    } else {
+      setSearch({ ...search, [event.target.name]: event.target.value });
+    }
   };
 
   const handleDeleteFiltro = () => {
@@ -52,6 +68,7 @@ export const Cotizacion = () => {
       project_type: "",
       date_start: "",
       date_end: "",
+      total_effort: "",
     });
   };
 
@@ -103,7 +120,12 @@ export const Cotizacion = () => {
   };
 
   useEffect(() => {
-    //console.log("---search", search);
+    setQuotation(quotationOriginal);
+  }, [quotationOriginal]);
+
+  useEffect(() => {
+    //console.log("---searchssss", search);
+    //console.log(quotation )
     cargarDatos();
   }, [search]);
 
@@ -153,7 +175,8 @@ export const Cotizacion = () => {
               search.status !== "" ||
               search.project_type !== "" ||
               search.date_start !== "" ||
-              search.date_end !== "" ? (
+              search.date_end !== "" ||
+              search.total_effort !== "" ? (
                 <button
                   className="ButtonDeleteFiltro"
                   onClick={() => {
@@ -238,7 +261,9 @@ export const Cotizacion = () => {
                         </td>
                         <td>
                           {quo.link_jira ? (
-                            <a target={"_blank"} href={quo.link_jira}><img src={Images.JIRA} width={25} alt={"View"}  /></a>
+                            <a target={"_blank"} href={quo.link_jira}>
+                              <img src={Images.JIRA} width={25} alt={"View"} />
+                            </a>
                           ) : (
                             <></>
                           )}
