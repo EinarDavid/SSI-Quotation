@@ -75,6 +75,14 @@
 .footerTable {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  /* margin-right: 3%; */
+  gap:10px
+}
+
+.footerPagination{
+  display: flex;
+  align-items: center;
   justify-content: flex-end;
   /* margin-right: 3%; */
   gap:10px

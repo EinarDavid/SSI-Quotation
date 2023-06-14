@@ -48,7 +48,7 @@ export const RegistroCotizacion = ({
           <TextInputLabel
             Name="project_code"
             Required={true}
-            LabelInput={"Código Jira"}
+            LabelInput={"Código Jira *"}
             Placeholder={"Escribe el código Jira de cotización"}
             OnChange={(e) => handleChangeCabecera(e)}
             Value={cabecera?.project_code}
@@ -63,7 +63,7 @@ export const RegistroCotizacion = ({
           />
 
           <div className="containerTextInput">
-            <label className="labelInput">Cliente</label>
+            <label className="labelInput">Cliente *</label>
 
             <select
               name="client"
@@ -107,7 +107,7 @@ export const RegistroCotizacion = ({
             )}
           </div>
           <div className="containerTextInput">
-            <label className="labelInput">Responsable</label>
+            <label className="labelInput">Responsable *</label>
 
             <select
               name="responsible"
@@ -129,7 +129,7 @@ export const RegistroCotizacion = ({
           </div>
 
           <div className="containerTextInput">
-            <label className="labelInput">Tipo de Proyecto</label>
+            <label className="labelInput">Tipo de Proyecto *</label>
 
             <select
               name="project_type"

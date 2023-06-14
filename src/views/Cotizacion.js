@@ -40,19 +40,17 @@ export const Cotizacion = () => {
   });
 
   const handleChangeSearch = (event) => {
-    setSearch({ ...search, [event.target.name]: event.target.value })
+    setSearch({ ...search, [event.target.name]: event.target.value });
 
     if (event.target.name == "total_effort") {
-
       console.log("aqui");
       const value = event.target.value;
       const onlyNumbers = /^[0-9\b]+$/; // Expresión regular para permitir solo números y la tecla "backspace" (código 8)
-  
-      if (value === '' || onlyNumbers.test(value)) {
+
+      if (value === "" || onlyNumbers.test(value)) {
         //setInputValue(value);
-        setSearch({ ...search, [event.target.name]: value })
+        setSearch({ ...search, [event.target.name]: value });
       }
-      
     } else {
       setSearch({ ...search, [event.target.name]: event.target.value });
     }
@@ -98,16 +96,33 @@ export const Cotizacion = () => {
     },
   ];
 
-  /*useEffect(() => {
-    try {
-      getQuotationAll().then(({ data }) => {
-        console.log('------', data);
-        setQuotationOriginal(data);
-      });
-    } catch (error) {
-      alert(error);
-    }
-  }, []);*/
+  const DescargarReporte = () =>{
+    const XLSX = require('xlsx')
+
+        // array of objects to save in Excel 
+        let binary_univers = quotation;
+        let listaDescargable = [];
+        //console.log(quotation)
+        binary_univers.forEach((element, index) => {
+            listaDescargable.push({
+                Nro: index + 1,status: element.status, project_code: element.project_code, id_order: element.id_order,
+                client: element.client, responsible: element.responsible, project_type: element.project_type,
+                date: element.date, total_effort: element.total_effort, link_jira: element.link_jira
+            })
+        });
+
+        let binaryWS = XLSX.utils.json_to_sheet(listaDescargable);
+
+        // Create a new Workbook
+        var wb = XLSX.utils.book_new()
+
+        // Name your sheet
+        XLSX.utils.book_append_sheet(wb, binaryWS, 'Reporte')
+
+        // export your excel
+        XLSX.writeFile(wb, 'Reporte.xlsx');
+  }
+
   const cargarDatos = () => {
     postFilters(search).then(({ data }) => {
       //console.log("Res Filter", data);
@@ -284,21 +299,32 @@ export const Cotizacion = () => {
                 </table>
               </div>
               <div className="footerTable">
-                <RowsSelect
-                  Name={"Page"}
-                  LabelInput={"Filas por página"}
-                  SelectOption={RowsForPage}
-                  OnChange={(e) => {
-                    setCantidadPagina(Number(e.target.value));
-                  }}
-                  Value={cantidadPagina || ""}
-                />
-                <PaginationTable
-                  setLaboratorios={setQuotation}
-                  laboratoriosOriginal={quotationOriginal}
-                  cantidadPagina={cantidadPagina}
-                  getLaboratorioCant={getQuotationCant}
-                />
+                <div>
+                  <ButtonIcon
+                    Nombre={"Descargar Reporte"}
+                    OnClick={() => {
+                      DescargarReporte();
+                    }}
+                    Image={Images.DOWNLOAD}
+                  />
+                </div>
+                <div className="footerPagination">
+                  <RowsSelect
+                    Name={"Page"}
+                    LabelInput={"Filas por página"}
+                    SelectOption={RowsForPage}
+                    OnChange={(e) => {
+                      setCantidadPagina(Number(e.target.value));
+                    }}
+                    Value={cantidadPagina || ""}
+                  />
+                  <PaginationTable
+                    setLaboratorios={setQuotation}
+                    laboratoriosOriginal={quotationOriginal}
+                    cantidadPagina={cantidadPagina}
+                    getLaboratorioCant={getQuotationCant}
+                  />
+                </div>
               </div>
             </div>
           </div>

@@ -15,6 +15,7 @@ import View from '../assets/view.svg';
 import QuoUnSelect from '../assets/quotationUnselected.svg';
 import QuoSelect from '../assets/quotationSelected.svg';
 import Jira from '../assets/Jira.svg';
+import Download from '../assets/download.svg';
 
 const Images = {
     SSI_LOGO:SSI,
@@ -33,6 +34,7 @@ const Images = {
     QUOUNSELECTED: QuoUnSelect,
     QUOSELECTED: QuoSelect,
     JIRA: Jira,
+    DOWNLOAD: Download
     
 }
 
