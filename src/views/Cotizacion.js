@@ -43,7 +43,7 @@ export const Cotizacion = () => {
     setSearch({ ...search, [event.target.name]: event.target.value });
 
     if (event.target.name == "total_effort") {
-      console.log("aqui");
+      //console.log("aqui");
       const value = event.target.value;
       const onlyNumbers = /^[0-9\b]+$/; // Expresión regular para permitir solo números y la tecla "backspace" (código 8)
 
@@ -124,19 +124,26 @@ export const Cotizacion = () => {
   }
 
   const cargarDatos = () => {
-    postFilters(search).then(({ data }) => {
-      //console.log("Res Filter", data);
-      data = data.map((da, i) => ({
-        ...da,
-        i,
-      }));
-      setQuotationOriginal(data);
-    });
+    try {
+      postFilters(search).then(({ data }) => {
+        //console.log("Res Filter", data);
+        data = data.map((da, i) => ({
+          ...da,
+          i,
+        }));
+        setQuotationOriginal(data);
+        setQuotation(data);
+      })
+      .catch((e) => {
+        console.error("---",e.message);
+      })
+    } catch (error) {
+      console.log(error)
+    }
+    
   };
 
-  useEffect(() => {
-    setQuotation(quotationOriginal);
-  }, [quotationOriginal]);
+
 
   useEffect(() => {
     //console.log("---searchssss", search);
@@ -269,7 +276,7 @@ export const Cotizacion = () => {
                         <td className="containerTable">{quo.i + 1}</td>
                         <td className="containerTable">
                           {quo.status ? (
-                            <ButtonState State={quo?.status} />
+                            <ButtonState State={quo?.status} InProgress={quo?.inprogress} />
                           ) : (
                             <></>
                           )}
