@@ -100,7 +100,7 @@ export const Cotizacion = () => {
     const XLSX = require('xlsx')
 
         // array of objects to save in Excel 
-        let binary_univers = quotation;
+        let binary_univers = quotationOriginal;
         let listaDescargable = [];
         //console.log(quotation)
         binary_univers.forEach((element, index) => {
