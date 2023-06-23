@@ -21,6 +21,7 @@ import {
   convertCurrencyToNumber3,
   valideKeyEffort,
 } from "../services/ValidInput";
+import { ViewCotizacionDisabled } from "../components/Forms/ViewCotizacionDisabled";
 
 let campoID = 0;
 let StateDetail = "FCAST";
@@ -31,8 +32,8 @@ export const ViewCotización = ({ callback }) => {
   let { id_quotation } = useParams();
   //console.log('---id', id_quotation);
 
-  const [disableButton, setDisableButton] = useState(false);
-  const [disbaledCheck, setDisbaledCheck] = useState(true);
+  const [disableButton, setDisableButton] = useState(true);
+  const [disbaledCheck, setDisbaledCheck] = useState(false);
   const [validUrl, setValidUrl] = useState(false);
   const [cabecera, setCabecera] = useState({});
   const [detalle, setDetalle] = useState([
@@ -67,7 +68,6 @@ export const ViewCotización = ({ callback }) => {
     if (id_quotation) {
       getQuotationOne(id_quotation).then(({ data }) => {
         //console.log('data--', data)
-        
 
         setCabecera(data[0]);
       });
@@ -104,7 +104,7 @@ export const ViewCotización = ({ callback }) => {
 }, [cabecera])*/
 
 
-  const handleChangeCabecera = (event) => {
+  /*const handleChangeCabecera = (event) => {
     
     if (event.target.name === "project_code") {
       console.log("Proyect")
@@ -132,13 +132,13 @@ export const ViewCotización = ({ callback }) => {
     if (event.target.name === "statusCheck") {
       console.log("Cabecera", event.target.name, event.target.checked);
       setCabecera({...cabecera, [event.target.name]: event.target.checked})
-      /*if (event.target.checked){
-        setCabecera({ ...cabecera, statusCheck: "SI" });  
-      }
-      else{
-        setCabecera({ ...cabecera, statusCheck: "NO" });  
-      }*/
-      
+    } 
+  };*/
+   const handleChangeCabecera = (event) => {
+    
+    if (event.target.name === "statusCheck") {
+      //console.log("Cabecera", event.target.name, event.target.checked);
+      setCabecera({...cabecera, [event.target.name]: event.target.checked})
     } 
   };
 
@@ -478,8 +478,14 @@ export const ViewCotización = ({ callback }) => {
 
   //valicacion de campos
   useEffect(() => {
+    var validarStateCheck = true;
     var validar = true;
 
+    detalle?.map((det) => {
+      if (!(det?.state === "ASGND") ) {
+        validarStateCheck = false;
+      }
+    });
     detalle?.map((det, index) => {
       //console.log('Detalle', index, det)
       if (
@@ -494,22 +500,16 @@ export const ViewCotización = ({ callback }) => {
       ) {
         validar = false;
         //console.log("Entro--detalle");
-      } else {
-        //setDisableButton(false);
-        //console.log("Entro Else");
-      }
+      } 
     });
-    setDisableButton(!validar);
-  }, [detalle]);
 
-  useEffect(() => {
-    var validarStateCheck = true;
-    detalle?.map((det) => {
-      if (!(det?.state === "ASGND")) {
-        validarStateCheck = false;
-      }
-    });
+    if(detalle.length === 0){
+      validar=false      
+      validarStateCheck=false
+    }
+
     setDisbaledCheck(!validarStateCheck);
+    setDisableButton(!validar);
   }, [detalle]);
 
   return (
@@ -534,10 +534,13 @@ export const ViewCotización = ({ callback }) => {
             </div>
             <div className="spaceVer15" />
             <div className="containerFormulario">
-              <RegistroCotizacion
+              {/* <RegistroCotizacion
                 validUrl={validUrl}
                 cabecera={cabecera}
                 handleChangeCabecera={handleChangeCabecera}
+              /> */}
+              <ViewCotizacionDisabled
+                cabecera={cabecera}
               />
             </div>
             <div className="spaceVer15" />

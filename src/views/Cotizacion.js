@@ -233,6 +233,7 @@ export const Cotizacion = () => {
                       <th className="titleTable">Estado</th>
                       <th></th>
                       <th className="titleTable">Código</th>
+                      <th className="titleTable">Change Req Cod</th>
                       <th className="titleTable">Id_order</th>
                       <th className="titleTable">Cliente</th>
                       <th className="titleTable">Responsable</th>
@@ -292,6 +293,7 @@ export const Cotizacion = () => {
                         </td>
 
                         <td className="containerTable">{quo.project_code}</td>
+                        <td className="containerTable">{quo.project_chgreq_code}</td>
                         <td className="containerTable">{quo.id_order}</td>
                         <td className="containerTable">{quo.client}</td>
                         <td className="containerTable">{quo.responsible}</td>

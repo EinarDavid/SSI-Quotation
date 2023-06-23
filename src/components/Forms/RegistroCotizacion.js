@@ -11,6 +11,7 @@ export const RegistroCotizacion = ({
   cabecera,
   handleChangeCabecera,
   validUrl,
+  changeReq,
 }) => {
   const [clients, setClients] = useState();
   const [resources, setResources] = useState();
@@ -53,6 +54,18 @@ export const RegistroCotizacion = ({
             OnChange={(e) => handleChangeCabecera(e)}
             Value={cabecera?.project_code}
           />
+          {changeReq ? (
+            <TextInputLabel
+              Name="project_chgreq_code"
+              Required={true}
+              LabelInput={"Código Jira Change Request *"}
+              Placeholder={"Escribe el código Jira Change Request"}
+              OnChange={(e) => handleChangeCabecera(e)}
+              Value={cabecera?.project_chgreq_code}
+            />
+          ) : (
+            <></>
+          )}
           <TextInputLabel
             Name="id_order"
             Required={true}
@@ -87,10 +100,11 @@ export const RegistroCotizacion = ({
 
         <div className="rowInputs">
           <div className="containerTextInput">
-            <label className="labelInput">Link del Jira</label>
+            <label className="labelInput">Link del Jira *</label>
 
             <input
               type="url"
+              required
               className="textInput"
               name="link_jira"
               placeholder="Inserta el link del Jira"
@@ -100,7 +114,9 @@ export const RegistroCotizacion = ({
             ></input>
             {validUrl ? (
               <>
-                <label className="labelInputMessageError">El formato de la URL es incorrecto</label>{" "}
+                <label className="labelInputMessageError">
+                  El formato de la URL es incorrecto
+                </label>{" "}
               </>
             ) : (
               <></>

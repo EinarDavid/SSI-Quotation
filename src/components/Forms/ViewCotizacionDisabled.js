@@ -11,7 +11,7 @@ export const ViewCotizacionDisabled = ({ cabecera, handleChangeCabecera }) => {
   const [clients, setClients] = useState();
   const [resources, setResources] = useState();
   const [projectType, setProjectType] = useState();
-
+  //console.log(cabecera)
   useEffect(() => {
     try {
       getClientAll().then(({ data }) => {
@@ -45,6 +45,19 @@ export const ViewCotizacionDisabled = ({ cabecera, handleChangeCabecera }) => {
             OnChange={(e) => handleChangeCabecera(e)}
             Value={cabecera?.project_code}
           />
+          {cabecera.project_chgreq_code !== null ? (
+            <TextInputLabel
+              Disabled={true}
+              Name="project_chgreq_code"
+              Required={true}
+              LabelInput={"Código Jira Change Request *"}
+              Placeholder={"Escribe el código Jira Change Request"}
+              OnChange={(e) => handleChangeCabecera(e)}
+              Value={cabecera?.project_chgreq_code}
+            />
+          ) : (
+            <></>
+          )}
           <TextInputLabel
             Disabled={true}
             Name="id_order"
@@ -80,7 +93,7 @@ export const ViewCotizacionDisabled = ({ cabecera, handleChangeCabecera }) => {
         </div>
 
         <div className="rowInputs">
-        <div className="containerTextInput">
+          <div className="containerTextInput">
             <label className="labelInput">Link del Jira</label>
 
             <input
@@ -93,7 +106,6 @@ export const ViewCotizacionDisabled = ({ cabecera, handleChangeCabecera }) => {
               defaultValue={cabecera?.link_jira || ""}
               onChange={(e) => handleChangeCabecera(e)}
             ></input>
-           
           </div>
           <div className="containerTextInput">
             <label className="labelInput">Responsable</label>

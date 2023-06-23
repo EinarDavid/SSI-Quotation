@@ -13,6 +13,7 @@ export const ModalRegCotizacion = ({ SetModal, modal, callback }) => {
 
   const [disableButton, setDisableButton] = useState(true);
   const [validUrl, setValidUrl] = useState(false);
+  const [changeReq, setChangeReq] = useState(false);
 
   const [cabecera, setCabecera] = useState({
     client: "",
@@ -22,6 +23,7 @@ export const ModalRegCotizacion = ({ SetModal, modal, callback }) => {
     total_effort: 0.0,
     project_code: "",
     project_type: "",
+    project_chgreq_code: "",
     link_jira: "",
   });
 
@@ -52,7 +54,10 @@ export const ModalRegCotizacion = ({ SetModal, modal, callback }) => {
           total_effort: 0.0,
           project_code: "",
           project_type: "",
+          project_chgreq_code: "",
+          link_jira: "",
         });
+        setChangeReq(false)
 
         alert(data.message);
       });
@@ -82,21 +87,49 @@ export const ModalRegCotizacion = ({ SetModal, modal, callback }) => {
     } else {
       setCabecera({ ...cabecera, [event.target.name]: event.target.value });
     }
+
+    if (event.target.name === "project_type"){
+      console.log(event.target.value);
+      if (event.target.value === "CHGREQ"){
+        setChangeReq(true)
+        
+      }else{
+        setChangeReq(false)
+      }
+    }
   };
 
   useEffect(() => {
     //console.log(cabecera)
-    if (
-      cabecera.project_code !== "" &&
-      cabecera.client !== "" &&
-      cabecera.responsible !== "" &&
-      cabecera.project_type !== ""
-    ) {
-      setDisableButton(false);
-      //console.log('entro')
-    } else {
-      setDisableButton(true);
-      //console.log('entroTRUE')
+    if(changeReq){
+      if (
+        cabecera.project_code !== "" &&
+        cabecera.client !== "" &&
+        cabecera.responsible !== "" &&
+        cabecera.link_jira !== "" &&
+        cabecera.project_type !== "" &&
+        cabecera.project_chgreq_code !== ""
+      ) {
+        setDisableButton(false);
+        //console.log('entro')
+      } else {
+        setDisableButton(true);
+        //console.log('entroTRUE')
+      }
+    }else{
+      if (
+        cabecera.project_code !== "" &&
+        cabecera.client !== "" &&
+        cabecera.responsible !== "" &&
+        cabecera.link_jira !== "" &&
+        cabecera.project_type !== ""
+      ) {
+        setDisableButton(false);
+        //console.log('entro')
+      } else {
+        setDisableButton(true);
+        //console.log('entroTRUE')
+      }
     }
   }, [cabecera]);
 
@@ -116,6 +149,7 @@ export const ModalRegCotizacion = ({ SetModal, modal, callback }) => {
             cabecera={cabecera}
             handleChangeCabecera={handleChangeCabecera}
             validUrl={validUrl}
+            changeReq = {changeReq}
           />
 
           <div className="spaceVer20" />
