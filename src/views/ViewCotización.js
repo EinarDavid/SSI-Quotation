@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ButtonPrimary } from "../components/button/ButtonPrimary";
 import { ButtonState } from "../components/button/ButtonState";
-import { RegistroCotizacion } from "../components/Forms/RegistroCotizacion";
+
 import Images from "../config/Images";
 import {
+  JiraASSESS,
   getDetailQuotationAll,
   getHoursResource,
   getMonthsAll,
@@ -13,14 +14,10 @@ import {
   getRoleAll,
   getStatusResource,
   getWeekOfYear,
-  getWeekOfYearOfWeek,
   getYearsAll,
   postAddResource,
 } from "../services/cotizacionService";
-import {
-  convertCurrencyToNumber3,
-  valideKeyEffort,
-} from "../services/ValidInput";
+import { convertCurrencyToNumber3 } from "../services/ValidInput";
 import { ViewCotizacionDisabled } from "../components/Forms/ViewCotizacionDisabled";
 
 let campoID = 0;
@@ -99,47 +96,12 @@ export const ViewCotización = ({ callback }) => {
   }, []);
 
   //console.log(cabecera);
-/*useEffect(() => {
-  console.log("----",cabecera)
-}, [cabecera])*/
 
-
-  /*const handleChangeCabecera = (event) => {
-    
-    if (event.target.name === "project_code") {
-      console.log("Proyect")
-      setCabecera({
-        ...cabecera,
-        [event.target.name]: event.target.value.toUpperCase(),
-      });
-    }
-    if (event.target.name === "link_jira") {
-      if (!event.target.validity.valid) {
-        console.log("--JIRAAA", event.target.validity.valid);
-        setValidUrl(true);
-        setDisableButton(true);
-      } else {
-        setValidUrl(false);
-        setDisableButton(false);
-      }
-      setCabecera({ ...cabecera, [event.target.name]: event.target.value });
-    } else {
-      if(!event.target.name === "statusCheck"){
-        setCabecera({ ...cabecera, [event.target.name]: event.target.value });
-      }
-    }
-
-    if (event.target.name === "statusCheck") {
-      console.log("Cabecera", event.target.name, event.target.checked);
-      setCabecera({...cabecera, [event.target.name]: event.target.checked})
-    } 
-  };*/
-   const handleChangeCabecera = (event) => {
-    
+  const handleChangeCabecera = (event) => {
     if (event.target.name === "statusCheck") {
       //console.log("Cabecera", event.target.name, event.target.checked);
-      setCabecera({...cabecera, [event.target.name]: event.target.checked})
-    } 
+      setCabecera({ ...cabecera, [event.target.name]: event.target.checked });
+    }
   };
 
   const handleChangeDetalle = (event, index) => {
@@ -440,21 +402,30 @@ export const ViewCotización = ({ callback }) => {
   const onSubmit = () => {
     try {
       setDisableButton(true);
-      console.log("Dataaa",cabecera)
+      //console.log("Dataaa", cabecera);
       let data = cabecera;
       data.total_effort = sumaEffort;
       data.Campos = detalle;
 
-
       if (data.statusCheck) {
         data.status = "REG";
-        console.log("entro", data.status)
+        console.log("entro", data.status);
       }
       //console.log("Datos Enviados: ", data);
 
       postAddResource(data).then(({ data }) => {
         //console.log("Res BD", data);
         setDisableButton(false);
+
+        if(data.data.project_type == "ASSESS"){
+          console.log('Entro-ASSESS')
+          JiraASSESS(data.data);
+          //Si la respuesta es 204 enviar email
+        } else if(data.data.project_type == "EXEC"){
+          console.log('Entro EXEC--------')
+          //
+        }
+
         if (callback) callback();
         //limpiar cajas, cerrar modal y avisar que fue añadido con exito
 
@@ -482,7 +453,7 @@ export const ViewCotización = ({ callback }) => {
     var validar = true;
 
     detalle?.map((det) => {
-      if (!(det?.state === "ASGND") ) {
+      if (!(det?.state === "ASGND")) {
         validarStateCheck = false;
       }
     });
@@ -500,12 +471,12 @@ export const ViewCotización = ({ callback }) => {
       ) {
         validar = false;
         //console.log("Entro--detalle");
-      } 
+      }
     });
 
-    if(detalle.length === 0){
-      validar=false      
-      validarStateCheck=false
+    if (detalle.length === 0) {
+      validar = false;
+      validarStateCheck = false;
     }
 
     setDisbaledCheck(!validarStateCheck);
@@ -539,9 +510,7 @@ export const ViewCotización = ({ callback }) => {
                 cabecera={cabecera}
                 handleChangeCabecera={handleChangeCabecera}
               /> */}
-              <ViewCotizacionDisabled
-                cabecera={cabecera}
-              />
+              <ViewCotizacionDisabled cabecera={cabecera} />
             </div>
             <div className="spaceVer15" />
             <h1 className="h2Style">Recursos</h1>
@@ -783,6 +752,12 @@ export const ViewCotización = ({ callback }) => {
                 />
                 Guardar como Registrado
               </label>
+              {/* <ButtonPrimary
+                Style={{ width: "100%" }}
+                //Disabled={disableButton}
+                Nombre={"JIRA"}
+                OnClick={JiraApiRest(cabecera)}
+              /> */}
               <p className="Effort">Total hrs: {sumaEffort} </p>
             </div>
           </div>

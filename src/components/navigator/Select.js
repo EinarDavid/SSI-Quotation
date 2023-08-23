@@ -1,5 +1,5 @@
 import React from "react";
-import Images from "../../config/Images";
+
 
 export const Select = ({Image, Text}) => {
   return (

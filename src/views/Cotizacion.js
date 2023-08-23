@@ -12,12 +12,11 @@ import { RowsSelect } from "../components/textInput/RowsSelect";
 
 import Images from "../config/Images";
 import {
-  getQuotationAll,
   getQuotationCant,
   postFilters,
 } from "../services/cotizacionService";
 import { ConvertDate } from "../services/Fecha";
-import { valideKeyEffort } from "../services/ValidInput";
+
 
 export const Cotizacion = () => {
   const navigate = useNavigate();

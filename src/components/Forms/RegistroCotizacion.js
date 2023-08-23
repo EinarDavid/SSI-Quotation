@@ -49,7 +49,7 @@ export const RegistroCotizacion = ({
           <TextInputLabel
             Name="project_code"
             Required={true}
-            LabelInput={"Código Jira *"}
+            LabelInput={"Código Jira (business)*"}
             Placeholder={"Escribe el código Jira de cotización"}
             OnChange={(e) => handleChangeCabecera(e)}
             Value={cabecera?.project_code}

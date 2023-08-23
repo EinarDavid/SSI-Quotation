@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ButtonState } from "../components/button/ButtonState";
-import { RegistroCotizacion } from "../components/Forms/RegistroCotizacion";
+
 import { ViewCotizacionDisabled } from "../components/Forms/ViewCotizacionDisabled";
 import Images from "../config/Images";
 import {
