@@ -122,7 +122,7 @@ export async function JiraASSESS(dataQuotation) {
 
     
     var config = {
-      method: 'put',
+      method: 'put', 
       url: urlJira,
       headers: { 
         'Authorization': basicAuth, 
