@@ -132,7 +132,7 @@ export async function JiraASSESS(dataQuotation) {
       data : data
     };
 
-    console.log("Auth",config)
+    console.log("Config",config)
     
     return await axios(config)
     .then(function (response) {
