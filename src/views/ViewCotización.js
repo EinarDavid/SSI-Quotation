@@ -441,6 +441,7 @@ export const ViewCotización = ({ callback }) => {
         console.log(emailSend.data.message);
         Jira = Jira + "\n" + emailSend.data.message;
 
+        //Callback
         if (callback) callback();
         //limpiar cajas, cerrar modal y avisar que fue añadido con exito
 
