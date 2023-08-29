@@ -6,6 +6,7 @@ import { ButtonState } from "../components/button/ButtonState";
 import Images from "../config/Images";
 import {
   JiraASSESS,
+  JiraEXEC,
   getDetailQuotationAll,
   getHoursResource,
   getMonthsAll,
@@ -16,9 +17,11 @@ import {
   getWeekOfYear,
   getYearsAll,
   postAddResource,
+  sendEmail,
 } from "../services/cotizacionService";
 import { convertCurrencyToNumber3 } from "../services/ValidInput";
 import { ViewCotizacionDisabled } from "../components/Forms/ViewCotizacionDisabled";
+//import { EnviarEmail } from "../services/Email";
 
 let campoID = 0;
 let StateDetail = "FCAST";
@@ -399,7 +402,7 @@ export const ViewCotización = ({ callback }) => {
     }
   }, []);
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     try {
       setDisableButton(true);
       //console.log("Dataaa", cabecera);
@@ -413,24 +416,38 @@ export const ViewCotización = ({ callback }) => {
       }
       //console.log("Datos Enviados: ", data);
 
-      postAddResource(data).then(({ data }) => {
+      postAddResource(data).then(async ({ data }) => {
         //console.log("Res BD", data);
-        setDisableButton(false);
+        var Jira;
+        
 
-        if(data.data.project_type == "ASSESS"){
-          console.log('Entro-ASSESS')
-          JiraASSESS(data.data);
-          //Si la respuesta es 204 enviar email
-        } else if(data.data.project_type == "EXEC"){
-          console.log('Entro EXEC--------')
-          //
+        if (data.data.project_type == "ASSESS") {
+          const dataAss = await JiraASSESS(data.data);
+          console.log(dataAss.data.message);
+          Jira = dataAss.data.message;
+
+        } else if (data.data.project_type == "EXEC") {
+          const dataEx = await JiraEXEC(data.data);
+          console.log(dataEx.data.message);
+          Jira = dataEx.data.message;
         }
+
+        //Funcion enviar email
+        let dataEmail = cabecera;
+        dataEmail.total_effort = sumaEffort;
+        dataEmail.Campos = detalle;
+
+        const emailSend = await sendEmail(dataEmail);
+        console.log(emailSend.data.message);
+        Jira = Jira + "\n" + emailSend.data.message;
 
         if (callback) callback();
         //limpiar cajas, cerrar modal y avisar que fue añadido con exito
 
-        alert(data.message);
+        Jira = Jira + "\n" + data.message;
+        alert(Jira);
         setValidacionHoras([[]]);
+        setDisableButton(false);
         navigate("/cotizacion");
       });
     } catch (error) {
@@ -482,6 +499,8 @@ export const ViewCotización = ({ callback }) => {
     setDisbaledCheck(!validarStateCheck);
     setDisableButton(!validar);
   }, [detalle]);
+
+  const Email = () => {};
 
   return (
     <>
@@ -752,12 +771,7 @@ export const ViewCotización = ({ callback }) => {
                 />
                 Guardar como Registrado
               </label>
-              {/* <ButtonPrimary
-                Style={{ width: "100%" }}
-                //Disabled={disableButton}
-                Nombre={"JIRA"}
-                OnClick={JiraApiRest(cabecera)}
-              /> */}
+
               <p className="Effort">Total hrs: {sumaEffort} </p>
             </div>
           </div>
